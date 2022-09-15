@@ -9,7 +9,7 @@ services:
                         - POSTGRES_DB=data
                 restart: always
         disk:
-                build: aasherstyugina/yandex_disk:v1
+                image: aasherstyugina/yandex_disk:v1
                 container_name: disk
                 environment:
                         - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/data
