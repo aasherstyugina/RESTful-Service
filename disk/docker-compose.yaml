@@ -1,0 +1,20 @@
+version: '3'
+services:
+        db:
+                container_name: db
+                image: postgres:11.3
+                environment:
+                        - POSTGRES_USER=yandex
+                        - POSTGRES_PASSWORD=123
+                        - POSTGRES_DB=data
+                restart: always
+        disk:
+                build: .
+                container_name: disk
+                environment:
+                        - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/data
+                ports:
+                        - 80:8080
+                restart: always
+                depends_on:
+                        - db
